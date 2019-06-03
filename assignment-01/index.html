@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>The Rick and Morty</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="jumbotron jumbotron-fluid" style="margin: auto;background-color: black ; ">
+            <div class="container" style="color: white;">
+                <h1 class="display-4"><b>The Rick and Morty character</b></h1>
+                <p class="lead">HEY, DID YOU EVER WANT TO HOLD A TERRY FOLD?</p>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        v-model="searchText">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" v-on:click="searchTextResult">Search</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="container">
+                {{ searchText }}
+                <div class="row">
+                    <div class="col-md-4" v-for="character in searchTextResult" style="padding-top:15px">
+                        <div class="card my-3" style="height:100%">
+                            <img :src="character.image" class="card-img-top img-fluid" style="height:100%" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{character.name}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">id: {{ character.id }} - create: {{ checkYear }}
+                                </h6>
+                                <p class="card-text">
+                                    <b>STATUS:</b> {{ character.status }} <br>
+                                    <b>SPECIES:</b> {{ character.species }} <br>
+                                    <b>GENDER:</b> {{ character.gender }} <br>
+                                    <b>ORIGIN:</b> {{ character.origin.name }} <br>
+                                    <b>LAST LOCATION:</b> {{ character.location.name }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    info: [],
+                    searchText: ''
+                };
+            },
+            methods: {
+                checkYear(){
+                    var year = parseInt.info.year.slice(0, 5);
+                    var year_now = 2019;
+                    distance = year_now - year;
+
+                    if (distance == 0){
+                        return 'created this year';
+                    }
+                    else if (distance > 0){
+                        if (distance == 1){
+                            return 'created a year ago';
+                        }
+                        else{
+                            return 'created' + distance + 'year ago';
+                        }
+                    }
+                }
+            },
+            mounted() {
+                axios
+                    .get('https://rickandmortyapi.com/api/character/')
+                    .then(response => (
+                        this.info = response.data.results
+                    ))
+                    .catch(error => console.log('Fetch data error'));
+            },
+            computed: {
+                searchTextResult: function() {
+                    return this.info.filter(character => {
+                        let searchText = this.searchText.toLowerCase()
+
+                        let isMathchTitle = character.name.toLowerCase().includes(searchText)
+                        return isMathchTitle
+                    });
+                }
+            },
+        });
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
