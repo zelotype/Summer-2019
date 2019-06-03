@@ -61,23 +61,7 @@
                 };
             },
             methods: {
-                checkYear(){
-                    var year = parseInt.info.year.slice(0, 5);
-                    var year_now = 2019;
-                    distance = year_now - year;
-
-                    if (distance == 0){
-                        return 'created this year';
-                    }
-                    else if (distance > 0){
-                        if (distance == 1){
-                            return 'created a year ago';
-                        }
-                        else{
-                            return 'created' + distance + 'year ago';
-                        }
-                    }
-                }
+                
             },
             mounted() {
                 axios
