@@ -117,3 +117,19 @@ searchbar:hover, :focus{
     margin-bottom: 5%;
 }
 
+.status{
+    border: 1px;
+    background-color: yellowgreen;
+    border-radius: 50px;
+    text-align: center;
+    color: white;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+}

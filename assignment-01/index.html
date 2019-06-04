@@ -35,16 +35,20 @@
 
         <div class="container-fluid" id="result">
             <div class="row">
-                <div class="col-md-3" v-for="character in searchTextResult" style="padding-top:15px">
+                <div class="col-md-3" v-for="character in searchTextResult" style="padding-top:15px;">
                     <div class="card my-3" style="height:600px;">
                         <img :src="character.image" class="card-img-top img-fluid avatar" style="height:100%;" />
                         <div class="card-body" style="padding-top: 0%;">
-                            <h5 class="card-title" style="font-family: classique;font-size: 40px;color: #2ECC71;margin-bottom: 0;">{{character.name}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">id: {{ character.id }} - {{ calculate_year(character.created) }}
+                            <div class="name">
+                                <h5 class="card-title" style="font-family: classique;font-size: 30px;color: black;margin-bottom: 0;">{{character.name}}</h5>
+                                <!-- <div class="status" v-if="character.status == 'Alive'">{{ character.status }}</div> -->
+                                <div class="status" :style="{'background-color': (character.status == 'Alive') ? 'yellowgreen' : (character.status == 'unknown') ? 'gray' : 'red' }">{{ character.status }}</div>
+                            </div>
+                            <h6 class="card-subtitle mb-2 text-muted" style="margin-top:2%;">id: {{ character.id }} - {{ calculate_year(character.created) }}
                             </h6>
                             <div class="avatar-line"></div>
                             <p class="card-text">
-                                <b>STATUS:</b> {{ character.status }} <br>
+                                <!-- <b>STATUS:</b> {{ character.status }} <br> -->
                                 <b>SPECIES:</b> {{ character.species }} <br>
                                 <b>GENDER:</b> {{ character.gender }} <br>
                                 <b>ORIGIN:</b> {{ character.origin.name }} <br>
