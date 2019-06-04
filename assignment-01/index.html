@@ -13,28 +13,31 @@
 
 <body>
     <div id="app">
-        <div class="jumbotron jumbotron-fluid" style="margin: auto;background-color: black ; ">
+        <div class="jumbotron jumbotron-fluid" style="margin: auto;background-color: black ; height: 400px;">
             <div class="container" style="color: white;">
-                <h1 class="display-4"><b>The Rick and Morty character</b></h1>
-                <p class="lead">HEY, DID YOU EVER WANT TO HOLD A TERRY FOLD?</p>
+                <h1 class="display-4" style="text-align: center;margin: 40px;margin-bottom: 0%;"><b>The Rick and Morty
+                        character</b></h1>
+                <p class="lead" style="text-align: center;margin-top: 5px;">HEY, DID YOU EVER WANT TO HOLD A TERRY FOLD?
+                </p>
                 <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    <input class="searchbar" type="search" placeholder="Search Character" aria-label="Search"
                         v-model="searchText">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" v-on:click="searchTextResult">Search</button>
+                    <!-- <button class="searchbutton" type="submit" v-on:click="searchTextResult">Search</button> -->
                 </form>
             </div>
         </div>
         <div>
             <div class="container">
-                {{ searchText }}
                 <div class="row">
                     <div class="col-md-4" v-for="character in searchTextResult" style="padding-top:15px">
                         <div class="card my-3" style="height:100%">
-                            <img :src="character.image" class="card-img-top img-fluid" style="height:100%" />
-                            <div class="card-body">
+                            <img :src="character.image" class="card-img-top img-fluid avatar" style="height:100%" />
+                            <div class="character-name">
                                 <h5 class="card-title">{{character.name}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">id: {{ character.id }} - create: {{ checkYear }}
+                                <h6 class="card-subtitle mb-2 text-muted">id: {{ character.id }} - create:
                                 </h6>
+                            </div>
+                            <div class="card-body" style="padding-top: 0%;">
                                 <p class="card-text">
                                     <b>STATUS:</b> {{ character.status }} <br>
                                     <b>SPECIES:</b> {{ character.species }} <br>
@@ -61,7 +64,7 @@
                 };
             },
             methods: {
-                
+
             },
             mounted() {
                 axios
@@ -72,7 +75,7 @@
                     .catch(error => console.log('Fetch data error'));
             },
             computed: {
-                searchTextResult: function() {
+                searchTextResult: function () {
                     return this.info.filter(character => {
                         let searchText = this.searchText.toLowerCase()
 
