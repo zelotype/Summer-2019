@@ -1,3 +1,16 @@
+@font-face {
+    font-family: classique;
+    src: url(Cavorting.ttf);
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background: black;
+}
+
 nav{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -5,12 +18,34 @@ nav{
     grid-gap: 1em;
     align-items: center;
     text-align: center;
-    /* border-bottom: 4px solid black; */
     background: black;
 }
 
+.jumbotron{
+    text-align: center;
+    position: relative;
+    padding-top: 0%;
+}
+
+.head{
+    margin: auto;
+    /* background-image: url(); */
+    background-repeat: no-repeat;
+    height: 1000px;
+    background-image: url("https://vignette.wikia.nocookie.net/rickandmorty/images/9/98/S2e3_mount_morty_and_summer.png/revision/latest?cb=20160923231412");
+    width: 100%;
+}
+
+.text-head{
+    text-align: center;
+    padding-top: 20%;
+    /* margin-top: 20%; */
+    color: white;
+    
+
+}
 .searchbar{
-    width: 500px;
+    width: 70%;
     padding: 12px 24px;
     transition: transform 250ms ease-in-out;
     line-height: 18px;
@@ -19,59 +54,66 @@ nav{
     background-size: 18px 18px;
     background-position: 95% center;
     border-radius: 50px;
-    border: 1px solid #575756;
+    border: 1px solid white;
     transition: all 250ms ease-in-out;
     backface-visibility: hidden;
     transform-style: preserve-3d;
     background: transparent;
     text-align: center;
-    color: whitesmoke;
-    margin-left: 25%;
-    margin-top: 15px;
+    color: white;
+    margin: auto;
+    font-size: 28px;
 }
 searchbar:hover, :focus{
-    text-align: left;
     outline: 0;
     border: 1px solid transparent;
-    border-bottom: 1px solid #575756;
+    border-bottom: 1px solid white;
     border-radius: 0;
+    text-align: left;
+}
+
+::placeholder{
+    color: white;
+    opacity: 0.8;
+    font-size: 18px;
 }
 
 .searchbutton{
-    border: 1px solid;
+    border: 1px solid yellowgreen;
     background-repeat: no-repeat;
-    /* background-size: 15px 15px; */
+    background-size: 15px 15px;
     border-radius: 50px;
-    border: 1px solid #575756;
     background: yellowgreen;
-    padding: 10px;
     margin: 10px;
-    width: 100px;
+    width: 200px;
+    height: 50px;
     margin-top: 10px;
-    margin-right: 25%;
+    text-align: center;
     background-position: left;
+    display: inline-block;
 }
 
 .card{
     border-radius: 30px;
-    background-color: #212F3D;
-    color: whitesmoke;
+    background-color: white;
+    color: black;
 }
 .avatar{
-    /* border-radius: 50%; */
+    border-radius: 50%;
+    margin-right: auto;
+    margin-left: auto;
     padding: 20px;
     padding-bottom: 10px;
-}
-.character-name{
-    /* background-blend-mode: darken; */
-    margin-left: 20px;
-    padding-bottom: 0%;
-    opacity: 50%;
-    position: absolute;
-    bottom: 50px;
-    left: 16px;
+    height: 300px !important;
+    width: 300px;
 }
 
 .character{
     position: relative;
 }
+
+.avatar-line{
+    border-bottom: 1px solid #EAECEE;
+    margin-bottom: 5%;
+}
+
