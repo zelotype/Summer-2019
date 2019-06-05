@@ -27,6 +27,13 @@ nav{
     padding-top: 0%;
 }
 
+.black-jumbotron{
+    width: 100%; 
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.6);
+}
+
 .head{
     margin: auto;
     /* background-image: url(); */
@@ -62,9 +69,10 @@ nav{
     text-align: center;
     color: white;
     margin: auto;
+    margin-top: 2%;
     font-size: 28px;
 }
-searchbar:hover, :focus{
+.searchbar:hover, :focus{
     outline: 0;
     border: 1px solid transparent;
     border-bottom: 1px solid white;
@@ -79,7 +87,8 @@ searchbar:hover, :focus{
 }
 
 .searchbutton{
-    margin-top: 2%;
+    font-size: 20px;
+    margin-top: 3% !important;
     border: 1px solid yellowgreen;
     background-repeat: no-repeat;
     background-size: 15px 15px;
@@ -88,7 +97,6 @@ searchbar:hover, :focus{
     margin: 10px;
     width: 200px;
     height: 50px;
-    margin-top: 10px;
     text-align: center;
     background-position: left;
     display: inline-block;
@@ -120,7 +128,6 @@ searchbar:hover, :focus{
 
 .status{
     border: 1px;
-    background-color: yellowgreen;
     border-radius: 50px;
     text-align: center;
     color: white;
@@ -163,11 +170,13 @@ h1{
     color: white;
     font-size: 100px;
     text-align: center;
-    padding: 50px;
+    padding: 30px;
 }
 
 .display-4{
     padding-bottom: 0px;
+    font-size: 100px;
+    font-family: classique;
 }
 
 .unknown_location{
@@ -195,17 +204,33 @@ h1{
     color: black;
     margin-bottom: 0;
 }
-/* .lead:hover span{
-    display: none
+
+.card-body{
+    padding-top: 0%;
 }
-.lead:hover::before{
-    background-color: #E67E22;
-    content: 'I GOT ONE RIGHT HERE, GRAB MY TERRY FLAB';
-    border-radius: 50px;
-} */
 
-/* img:hover{
-    border: 5px solid;
-    border-color: salmon;
-} */
+.card-subtitle{
+    margin-top:2%;
+}
 
+.close-btn{
+    background-color: red;
+    border: none;
+}
+
+.lead{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.character-card{
+    height:600px;
+}
+
+.character-card-set{
+    padding-top:15px;
+}
+
+.footer-copyright{
+    color: white;
+}

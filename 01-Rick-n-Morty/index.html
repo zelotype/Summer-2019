@@ -15,24 +15,25 @@
     <div id="app">
         <!-- Jumbotron -->
         <div class="jumbotron jumbotron-fluid head">
-            <div style="width: 100%; height: 100%;position: absolute;background-color: rgba(0,0,0,0.6);">
+            <div class="black-jumbotron">
                 <!-- Text -->
                 <div class="container text-head">
-                    <h1 class="display-4" style="font-size: 100px;font-family: classique;"><b>The Rick and
+                    <h1 class="display-4"><b>The Rick and
                             Morty</b></h1>
-                    <p class="lead" style="text-align: center;margin-top: 5px;"><span>HEY, DID YOU EVER WANT TO HOLD A
+                    <p class="lead"><span>HEY, DID YOU EVER WANT TO HOLD A
                             TERRY
                             FOLD?</span></p>
                     <!-- Search part -->
                     <form class="form-inline">
-                        <input class="searchbar" type="search" placeholder="Search what do you want!"
+                        <input class="searchbar" type="search" placeholder="Search what do you want! 🔍"
                             aria-label="Search" v-model="searchText">
                     </form>
                     <button class="searchbutton" type="submit" v-on:click="searchTextResult"
-                        onClick="document.getElementById('result').scrollIntoView();">Search</button>
+                        onClick="document.getElementById('result').scrollIntoView();">Go</button>
                     <!-- Search part -->
                 </div>
                 <!-- Text -->
+
             </div>
         </div>
         <!-- Jumbotron -->
@@ -41,13 +42,13 @@
         <div class="container-fluid" id="result">
             <h1>Character</h1>
             <div class="row">
-                <div class="col-md-3" v-for="character in searchTextResult" style="padding-top:15px;">
-                    <div class="card my-3" style="height:600px;">
+                <div class="col-md-3 character-card-set" v-for="character in searchTextResult">
+                    <div class="card my-3 character-card">
                         <!-- Character image -->
-                        <img :src="character.image" class="card-img-top img-fluid avatar" style="height:100%;" />
+                        <img :src="character.image" class="card-img-top img-fluid avatar"/>
 
                         <!-- Character Information -->
-                        <div class="card-body" style="padding-top: 0%;">
+                        <div class="card-body">
                             <div class="name">
                                 <h5 class="card-title">
                                     {{character.name}}</h5>
@@ -56,7 +57,7 @@
                                     :style="{'background-color': (character.status == 'Alive') ? 'yellowgreen' : (character.status == 'unknown') ? 'gray' : 'red' }">
                                     {{ character.status }}</div>
                             </div>
-                            <h6 class="card-subtitle mb-2 text-muted" style="margin-top:2%;">id: {{ character.id }} -
+                            <h6 class="card-subtitle mb-2 text-muted">id: {{ character.id }} -
                                 {{ calculate_year(character.created) }}
                             </h6>
                             <div class="avatar-line"></div>
@@ -92,8 +93,8 @@
                                     <b>Dimension:</b> {{ info_location.dimension }}
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                        style="background-color: red;border: none;">Close</button>
+                                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal"
+                                    >Close</button>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +108,7 @@
         <!-- Footer -->
         <footer class="page-footer font-small special-color-dark pt-4">
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3" style="color: white">© 2019 Copyright:
+            <div class="footer-copyright text-center py-3">© 2019 Copyright:
                 <a href="https://github.com/zelotype" class="footer-link"> zelotype</a>
             </div>
             <!-- Copyright -->
