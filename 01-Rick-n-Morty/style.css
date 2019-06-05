@@ -144,6 +144,7 @@ nav{
 .location_detail{
     border: 0;
     background-color: transparent;
+
 }
 .location_detail:hover{
     background-color: #F4D03F;
