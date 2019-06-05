@@ -36,7 +36,6 @@ nav{
 
 .head{
     margin: auto;
-    /* background-image: url(); */
     background-repeat: no-repeat;
     height: 1000px;
     background-image: url("https://vignette.wikia.nocookie.net/rickandmorty/images/9/98/S2e3_mount_morty_and_summer.png/revision/latest?cb=20160923231412");
@@ -46,7 +45,6 @@ nav{
 .text-head{
     text-align: center;
     padding-top: 10%;
-    /* margin-top: 20%; */
     color: white;
     
 
@@ -237,7 +235,7 @@ h1{
 
 @media only screen and (max-width: 1178px){
     .status{
-        width: 50%;
+        width: 40%;
     }
     
 }
