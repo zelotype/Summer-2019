@@ -41,19 +41,19 @@
         <!-- Character card -->
         <div class="container-fluid" id="result">
             <h1>Character</h1>
-            <div class="row">
-                <div class="col-md-3 character-card-set" v-for="character in searchTextResult">
+            <div class="row mx-auto">
+                <div class="col-lg-3 col-md-4 character-card-set" v-for="character in searchTextResult">
                     <div class="card my-3 character-card">
                         <!-- Character image -->
                         <img :src="character.image" class="card-img-top img-fluid avatar"/>
 
                         <!-- Character Information -->
                         <div class="card-body">
-                            <div class="name"></div>
+                            <div class="name">
                                 <h5 class="card-title">
                                     {{character.name}}</h5>
                                 <!-- Status bar -->
-                                <div class="status"
+                                <div class="status my-auto"
                                     :style="{'background-color': (character.status == 'Alive') ? 'yellowgreen' : (character.status == 'unknown') ? 'gray' : 'red' }">
                                     {{ character.status }}</div>
                             </div>
