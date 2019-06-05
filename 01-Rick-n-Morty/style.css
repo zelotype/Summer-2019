@@ -234,3 +234,10 @@ h1{
 .footer-copyright{
     color: white;
 }
+
+@media only screen and (max-width: 1178px){
+    .status{
+        width: 50%;
+    }
+    
+}
