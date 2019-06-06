@@ -236,7 +236,18 @@ h1{
 
 @media only screen and (max-width: 1178px){
     .status{
-        width: 40%;
+        width: 28%;
+        font-size: 20px;
     }
-    
+    .card-title{
+        font-size: 50px;
+    }
+    .avatar-line{
+        margin-bottom: 2%;
+    }
+    .character-card{
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

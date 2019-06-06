@@ -26,9 +26,9 @@
                     <!-- Search part -->
                     <form class="form-inline">
                         <input class="searchbar" type="search" placeholder="Search what do you want! 🔍"
-                            aria-label="Search" v-model="searchText">
+                            aria-label="Search" v-model="searchText" id="searchForm">
                     </form>
-                    <button class="searchbutton" type="submit" v-on:click="searchTextResult"
+                    <button id="go-btn" class="searchbutton" type="submit" v-on:click="searchTextResult"
                         onClick="document.getElementById('result').scrollIntoView();">Go</button>
                     <!-- Search part -->
                 </div>
@@ -40,12 +40,12 @@
 
         <!-- Character card -->
         <div class="container-fluid" id="result">
-            <h1>Character</h1>
+            <h1 v-if="searchTextResult.length != 0">Character</h1>
             <div class="row mx-auto">
-                <div class="col-lg-3 col-md-4 character-card-set" v-for="character in searchTextResult">
+                <div class="col-lg-3 col-md-12 col-sm-12 character-card-set" v-for="character in searchTextResult">
                     <div class="card my-3 character-card">
                         <!-- Character image -->
-                        <img :src="character.image" class="card-img-top img-fluid avatar"/>
+                        <img :src="character.image" class="card-img-top img-fluid avatar" />
 
                         <!-- Character Information -->
                         <div class="card-body">
@@ -92,9 +92,10 @@
                                     <b>Type:</b> {{ info_location.type }} <br>
                                     <b>Dimension:</b> {{ info_location.dimension }}
                                 </div>
+                                <!-- Location Information -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal"
-                                    >Close</button>
+                                    <button type="button" class="btn btn-secondary close-btn"
+                                        data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -153,6 +154,7 @@
                         ))
                     }
                 },
+
             },
             mounted() {
                 axios
