@@ -1,9 +1,9 @@
 <template>
-  <div class="jumbotron jumbotron-fluid head">
+  <div class="jumbotron jumbotron-fluid head" style="padding-top:inherit;">
     <div class="black-jumbotron">
       <!-- Text -->
       <div class="container text-head">
-        <h1 class="display-4">
+        <h1 class="display-4" style="font-size: 100px;">
           <b>
             The Rick and
             Morty
@@ -17,7 +17,25 @@
           </span>
         </p>
         <!-- Search part -->
-        <Searchpart/>
+        <div>
+          <form class="form-inline">
+            <input
+              class="searchbar"
+              type="search"
+              placeholder="Search what do you want! 🔍"
+              aria-label="Search"
+              v-model="searchText"
+              id="searchForm"
+            >
+          </form>
+          <button
+            id="go-btn"
+            class="searchbutton"
+            type="submit"
+            v-on:click="searchTextResult"
+            onClick="document.getElementById('result').scrollIntoView();"
+          >Go</button>
+        </div>
         <!-- Search part -->
       </div>
       <!-- Text -->
@@ -26,54 +44,70 @@
 </template>
 
 <script>
-import Searchpart from './Searchpart';
+import EventBus from "../eventBus"
 
 export default {
   components: {
-    Searchpart
+    
+  },
+  data() {
+    return {
+      info: [],
+      searchText: ""
+    };
+  },
+  methods: {
+    recieveData(payload) {
+      this.info = payload;
+    }
+  },
+  mounted() {
+    EventBus.$on("Information", payload => {
+      this.recieveData(payload);
+    });
   }
-}
+};
 </script>
 
 <style>
 @font-face {
-    font-family: classique;
-    src: url(../assets/font/Cavorting.ttf);
+  font-family: classique;
+  src: url(../assets/font/Cavorting.ttf);
 }
-.jumbotron{
-    text-align: center;
-    position: relative;
-    padding-top: 0%;
-}
-
-.black-jumbotron{
-    width: 100%; 
-    height: 100%;
-    position: absolute;
-    background-color: rgba(0,0,0,0.6);
+.jumbotron {
+  text-align: center;
+  position: relative;
+  padding-top: 0%;
 }
 
-.head{
+.black-jumbotron {
+  /* padding-top: 0%; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.head {
   padding-top: inherit;
-    margin: auto;
-    background-repeat: no-repeat;
-    height: 1000px;
-    background-image: url("https://vignette.wikia.nocookie.net/rickandmorty/images/9/98/S2e3_mount_morty_and_summer.png/revision/latest?cb=20160923231412");
-    width: 100%;
+  margin: auto;
+  background-repeat: no-repeat;
+  height: 1000px;
+  background-image: url("https://vignette.wikia.nocookie.net/rickandmorty/images/9/98/S2e3_mount_morty_and_summer.png/revision/latest?cb=20160923231412");
+  width: 100%;
 }
 
-.text-head{
-    text-align: center;
-    padding-top: 10%;
-    color: white;
+.text-head {
+  text-align: center;
+  padding-top: 10%;
+  color: white;
 }
 
-.display-4{
-    padding-bottom: 0px;
-    font-size: 100px;
-    font-family: classique;
+.display-4 {
+  padding-bottom: 0px;
+  font-size: 100px;
+  font-family: classique;
 }
-
 </style>
 
 
