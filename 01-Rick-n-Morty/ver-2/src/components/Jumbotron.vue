@@ -32,7 +32,6 @@
             id="go-btn"
             class="searchbutton"
             type="submit"
-            v-on:click="searchTextResult"
             onClick="document.getElementById('result').scrollIntoView();"
           >Go</button>
         </div>
@@ -44,28 +43,20 @@
 </template>
 
 <script>
-import EventBus from "../eventBus"
-
+import EventBus from '../main'
 export default {
-  components: {
-    
-  },
-  data() {
-    return {
+  data(){
+    return{
+      searchText: "",
       info: [],
-      searchText: ""
     };
   },
   methods: {
-    recieveData(payload) {
-      this.info = payload;
+    emitMethod(){
+      EventBus.$emit('search', this.searchText);
     }
   },
-  mounted() {
-    EventBus.$on("Information", payload => {
-      this.recieveData(payload);
-    });
-  }
+  
 };
 </script>
 

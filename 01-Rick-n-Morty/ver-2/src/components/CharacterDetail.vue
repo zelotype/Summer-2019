@@ -89,8 +89,56 @@
 </template>
 
 <script>
+import EventBus from '../main'
+import axios from 'axios'
 export default {
-  
+  data() {
+    return {
+      info_location: [],
+      info: [],
+      searchText: ''
+    };
+  },
+  mounted() {
+    EventBus.$on('search', searchText => {
+      this.searchText = searchText
+    });
+    axios
+      .get("https://rickandmortyapi.com/api/character/")
+      .then(response => (
+        this.info = response.data.results
+      ));
+  },
+  computed: {
+    searchTextResult: function() {
+      return this.info.filter(character => {
+        this.searchText = this.searchText.toLowerCase();
+
+        let isMathchTitle = character.name.toLowerCase().includes(this.searchText);
+
+        return isMathchTitle;
+      });
+    }
+  },
+  methods: {
+    calculate_year: function(data) {
+      let created_year = Number(data.slice(0, 4));
+      let year = 2019;
+      let distance = year - created_year;
+      let text = "";
+      if (distance == 0) {
+        text = "created this year";
+      } else if (distance == 1) {
+        text = "created a year ago";
+      } else {
+        text = "created " + distance.toString() + " years ago";
+      }
+      return text;
+    },
+    findLocation: function(url) {
+        this.axios.get(url).then(response => (this.info_location = response.data));
+    }
+  },
 };
 </script>
 
