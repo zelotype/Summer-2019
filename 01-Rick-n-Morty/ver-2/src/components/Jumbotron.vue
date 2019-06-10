@@ -18,7 +18,7 @@
         </p>
         <!-- Search part -->
         <div>
-          <form class="form-inline">
+          <form class="form-inline" v-on:submit.prevent="emitMethod">
             <input
               class="searchbar"
               type="search"
@@ -26,6 +26,7 @@
               aria-label="Search"
               v-model="searchText"
               id="searchForm"
+              v-on:keyUp.enter="emitMethod"
             >
           </form>
           <button
@@ -53,6 +54,7 @@ export default {
   },
   methods: {
     emitMethod(){
+      alert('run method')
       EventBus.$emit('search', this.searchText);
     }
   },
@@ -98,6 +100,57 @@ export default {
   padding-bottom: 0px;
   font-size: 100px;
   font-family: classique;
+}
+
+.searchbar{
+    width: 70%;
+    padding: 12px 24px;
+    transition: transform 250ms ease-in-out;
+    line-height: 18px;
+    border: 1px solid;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+    border-radius: 50px;
+    border: 1px solid white;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    background: transparent;
+    text-align: center;
+    color: white;
+    margin: auto;
+    margin-top: 2%;
+    font-size: 28px;
+}
+.searchbar:hover, :focus{
+    outline: 0;
+    border: 1px solid transparent;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+    text-align: left;
+}
+
+::placeholder{
+    color: white;
+    opacity: 0.8;
+    font-size: 18px;
+}
+
+.searchbutton{
+    font-size: 20px;
+    margin-top: 3% !important;
+    border: 1px solid yellowgreen;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    border-radius: 50px;
+    background: yellowgreen;
+    margin: 10px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    background-position: left;
+    display: inline-block;
 }
 </style>
 

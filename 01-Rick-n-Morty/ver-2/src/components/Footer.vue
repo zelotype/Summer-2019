@@ -14,3 +14,11 @@ export default {
     
 }
 </script>
+
+<style>
+.footer-copyright{
+    color: white;
+}
+
+</style>
+
