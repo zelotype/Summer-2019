@@ -2,7 +2,7 @@
   <div>
     <h1>Component B</h1>
     <div>
-      <button>Count it!</button>
+      <button @click="increaseCounter">Count it!</button>
     </div>
   </div>
 </template>

@@ -3,7 +3,7 @@ import App from './App.vue'
 import Vuetify from 'vuetify'
 import store from './store/store'
 
-import 'vuetify/src/stylus/main.styl'
+// import 'vuetify/src/stylus/main.styl'
 
 Vue.use(Vuetify)
 
